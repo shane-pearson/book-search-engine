@@ -6,6 +6,7 @@ import {
   Row,
   Col
 } from 'react-bootstrap';
+import Auth from '../utils/auth'
 import { useQuery, useMutation } from "@apollo/client";
 
 import { GET_ME } from "../utils/queries";
@@ -27,14 +28,14 @@ const SavedBooks = () => {
           return false;
         }
 
-        const response = await getMe(token);
+        // const response = await getMe(token);
 
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
+        // if (!response.ok) {
+        //   throw new Error('something went wrong!');
+        // }
 
-        const user = await response.json();
-        setUserData(user);
+        // const user = await response.json();
+        // setUserData(user);
       } catch (err) {
         console.error(err);
       }
@@ -51,20 +52,20 @@ const SavedBooks = () => {
       return false;
     }
 
-    try {
-      const response = await deleteBook(bookId, token);
+    // try {
+    //   const response = await deleteBook(bookId, token);
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+    //   if (!response.ok) {
+    //     throw new Error('something went wrong!');
+    //   }
 
-      const updatedUser = await response.json();
-      setUserData(updatedUser);
-      // upon success, remove book's id from localStorage
-      removeBookId(bookId);
-    } catch (err) {
-      console.error(err);
-    }
+    //   const updatedUser = await response.json();
+    //   setUserData(updatedUser);
+    //   // upon success, remove book's id from localStorage
+    //   removeBookId(bookId);
+    // } catch (err) {
+    //   console.error(err);
+    // }
   };
 
   // if data isn't here yet, say so
